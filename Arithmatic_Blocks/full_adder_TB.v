@@ -46,7 +46,7 @@ module full_adder_TB;
 		// Initialize Inputs
 		{A, B, C_in} = 3'b000;
 		#100;
-      {A, B, C_in} = 3'b001;
+        {A, B, C_in} = 3'b001;
 		#100;
 		{A, B, C_in} = 3'b010;
 		#100;
@@ -62,7 +62,8 @@ module full_adder_TB;
 		#100;
 		{A, B, C_in} = 3'b000;
 		#100;
-		// Add stimulus here
+		
+		$stop;
 
 	end
       

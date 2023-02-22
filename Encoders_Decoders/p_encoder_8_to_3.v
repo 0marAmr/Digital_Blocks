@@ -50,6 +50,4 @@ module pri_enc_8_to_3(
 				A = 3'b000;
 		end
 	end
-	
-	
 endmodule

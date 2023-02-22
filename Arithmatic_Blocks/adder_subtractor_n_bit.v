@@ -50,4 +50,5 @@ module n_bit_addr_sub
        
     endgenerate
     
+    assign V = C[N] ^ C[N-1];
 endmodule

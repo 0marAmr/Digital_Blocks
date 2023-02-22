@@ -27,8 +27,7 @@ module ripple_adder_4_bit__TB;
 	// Inputs
 	reg [3:0] X;
 	reg [3:0] Y;
-	reg C_in;
-
+    reg C_in;
 	// Outputs
 	wire [3:0] Z;
 	wire C_out;
@@ -37,8 +36,8 @@ module ripple_adder_4_bit__TB;
 	ripple_addr_4_bit uut (
 		.X(X), 
 		.Y(Y), 
-		.C_in(C_in), 
-		.Z(Z), 
+		.C_in(C_in),
+		.Z(Z),
 		.C_out(C_out)
 	);
 
@@ -59,7 +58,7 @@ module ripple_adder_4_bit__TB;
 		
 		X = 4'd6;
 		Y = 4'd7;
-		C_in = 1;
+		C_in = 0;
 		#100;
 		
 		// 15 + 15 + 1 = 31 = b1 1111 
@@ -68,9 +67,8 @@ module ripple_adder_4_bit__TB;
 		C_in = 1;
 		#100;
         
-		// Add stimulus here
+		$stop;
 
 	end
       
 endmodule
-

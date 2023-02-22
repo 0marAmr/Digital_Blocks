@@ -33,7 +33,7 @@ module t_flip_flop_TB;
 	wire Q;
 
 	// Instantiate the Unit Under Test (UUT)
-	tff uut (
+	t_ff uut (
 		.clk(clk), 
 		.rstn(rstn), 
 		.T(T), 

@@ -4,9 +4,9 @@
 // Engineer: Omar Amr
 // 
 // Create Date:    16:57:57 02/01/2023 
-// Design Name: 	 Binary Full Adder
+// Design Name:    Binary Full Adder
 // Module Name:    full_adder 
-// Project Name: 	 Adders-Subtractors
+// Project Name:   Adders-Subtractors
 // Target Devices: 
 // Tool versions: 
 // Description: 	 A binary full adder that takes three inputs (A, B, C_in) and outputs the sum and carry (S,C_out)

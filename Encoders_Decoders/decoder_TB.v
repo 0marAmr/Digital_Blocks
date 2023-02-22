@@ -32,7 +32,7 @@ module decoder_TB;
 	wire [3:0] D;
 
 	// Instantiate the Unit Under Test (UUT)
-	dec_2_to_4 uut (
+	dec_2_to_4_case uut (
 		.A(A), 
 		.en(en), 
 		.D(D)

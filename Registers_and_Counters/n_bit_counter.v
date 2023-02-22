@@ -20,18 +20,29 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module cntr
-#(parameter N = 8)(
-	input clk, reset,
-	output reg [N-1:0] cntr_out
+#(parameter N = 4)(
+	input clk, n_reset,
+	output wire [N-1: 0] Q
 );
 		
-	always @(posedge clk) begin
-		if(reset == 1) begin
-			cntr_out <= 0;
+	reg [N-1: 0] R_current, R_next;
+
+	// register
+	always @(posedge clk or negedge n_reset) begin
+		if(~n_reset) begin
+			R_current <= 0;
 		end
 		else begin
-			cntr_out <= cntr_out + 1;
+			R_current <= R_next;
 		end
 	end
 
+	// NS logic
+	always @(*) begin
+		R_next = R_current + 1;
+	end
+
+	// OP logic
+	assign Q = R_current;
+	
 endmodule

@@ -38,3 +38,20 @@ module dec_2_to_4(
 	end
 
 endmodule
+
+module dec_2_to_4_case(
+		input wire [1:0] A,
+		input en,
+		output reg [3:0] D
+    );
+    
+    always @ * begin
+        case ({en,A})
+			3'b000, 3'b001, 3'b010, 3'b011: D = 4'b0000;
+			3'b100 : D = 4'b0001;
+			3'b101 : D = 4'b0010;
+			3'b110 : D = 4'b0100;
+			3'b111 : D = 4'b1000;
+		endcase
+    end
+endmodule

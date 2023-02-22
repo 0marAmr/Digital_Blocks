@@ -27,16 +27,16 @@ module counter_TB;
 	parameter N = 4;
 	// Inputs
 	reg clk;
-	reg reset;
+	reg n_reset;
 
 	// Outputs
-	wire [N-1:0] cntr_out;
+	wire [N-1:0] Q;
 
 	// Instantiate the Unit Under Test (UUT)
-	sat_cntr uut (
+	cntr uut (
 		.clk(clk), 
-		.reset(reset), 
-		.cntr_out(cntr_out)
+		.n_reset(n_reset), 
+		.Q(Q)
 	);
 
 	initial begin
@@ -45,9 +45,9 @@ module counter_TB;
 	end
    
 	initial begin
-		reset = 1;
+		n_reset = 0;
 		#50		// a positive edge must capture the reset signal, so we need a sufficient time (greater thatn 30ns)
-		reset = 0;
+		n_reset = 1;
 	end
 endmodule
 

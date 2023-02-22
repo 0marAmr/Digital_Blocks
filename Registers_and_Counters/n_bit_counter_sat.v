@@ -18,27 +18,26 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module sat_cntr(clk, reset,cntr_out);
+module sat_cntr(clk, n_reset, Q);
 	parameter N = 4; // counter size in bits
 	parameter max_count = 2**N - 1;
 	
-	input wire clk, reset;
-	output reg [N-1:0] cntr_out;
+	input wire clk, n_reset;
+	output reg [N-1:0] Q;
 	
 	wire indicator;
-	assign indicator = (cntr_out == max_count); // continious assign statement is executed when the LHS is changed
+	assign indicator = (Q == max_count); // continious assign statement is executed when the LHS is changed
 	
-	always @ (posedge clk) begin
-		if(reset == 1) begin
-			cntr_out <= 0; //reset the counter
+	always @ (posedge clk or negedge n_reset) begin
+		if(n_reset == 0) begin
+			Q <= 0; // reset the counter
 		end 
-		else begin
-			if(indicator) begin
-				cntr_out <= cntr_out; // the counter saturates
-			end else begin
-				cntr_out <= cntr_out + 1;
-			end
-		end
+		else if(indicator) 
+			Q <= Q; // the counter saturates
+		else 
+			Q <= Q + 1;
 	end
+		
+	
 	
 endmodule
