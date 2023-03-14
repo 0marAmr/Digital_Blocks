@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer:    Omar Amr 
+// Engineer: 
 // 
-// Create Date:  02/10/2023 12:19:51 PM
-// Design Name:  n-bit adder subtractor circuit
-// Module Name:  n_bit_addr_sub
-// Project Name: Adders_Subtractors
+// Create Date: 03/04/2023 11:57:39 AM
+// Design Name: 
+// Module Name: n_bit_adder
+// Project Name: 
 // Target Devices: 
 // Tool Versions: 
 // Description: 
@@ -20,28 +20,26 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module n_bit_addr_sub
-#(parameter N = 4 )(
-        input [N-1:0] X, Y,
-        input add_n,
-        output [N-1:0] Z,
-        output C_out, V
+module n_bit_adder
+#(  parameter N = 4
+)(
+    input [N-1:0] X, Y,
+    output [N-1:0] Z,
+    output C_out
     );
     
-    wire [N-1:0] Y_comp; // output of selective complement circuit
     wire [N:0] C; // output carry of each stage
-    assign C[0] = add_n;
-    assign C_out= C[N];
+    assign C[0] = 1'b0;
+    assign C_out = C[N] ;
     
     generate
        genvar i; // an integer that does not take negative values
        
        for(i = 0; i < N; i = i + 1)
        begin: stage //name for each iteration
-           assign Y_comp[i] = add_n ^ Y[i]; //selective complement circuit
            full_adder FA (
                 .A(X[i]),
-                .B(Y_comp[i]),
+                .B(Y[i]),
                 .C_in(C[i]),
                 .S(Z[i]),
                 .C_out(C[i+1])
